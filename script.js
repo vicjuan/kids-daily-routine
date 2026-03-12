@@ -2,21 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Defines the tasks for morning and evening
     const tasks = {
         morning: [
-            { id: 'm1', text: '起床刷牙', icon: '🪥' },
-            { id: 'm2', text: '洗洗臉', icon: '🧼' },
-            { id: 'm3', text: '換衣服', icon: '👕' },
-            { id: 'm4', text: '吃早餐', icon: '🥞' },
-            { id: 'm5', text: '整理書包', icon: '🎒' },
-            { id: 'm6', text: '穿鞋子出門', icon: '👟' }
+            { id: 'm1', text: '<ruby>起<rt>ㄑㄧ<span class="tone">ˇ</span></rt></ruby><ruby>床<rt>ㄔㄨㄤ<span class="tone">ˊ</span></rt></ruby><ruby>刷<rt>ㄕㄨㄚ</rt></ruby><ruby>牙<rt>ㄧㄚ<span class="tone">ˊ</span></rt></ruby>', icon: '🪥' },
+            { id: 'm2', text: '<ruby>洗<rt>ㄒㄧ<span class="tone">ˇ</span></rt></ruby><ruby>洗<rt>ㄒㄧ<span class="tone">ˇ</span></rt></ruby><ruby>臉<rt>ㄌㄧㄢ<span class="tone">ˇ</span></rt></ruby>', icon: '🧼' },
+            { id: 'm3', text: '<ruby>換<rt>ㄏㄨㄢ<span class="tone">ˋ</span></rt></ruby><ruby>衣<rt>ㄧ</rt></ruby><ruby>服<rt>ㄈㄨ<span class="tone">ˊ</span></rt></ruby>', icon: '👕' },
+            { id: 'm4', text: '<ruby>吃<rt>ㄔ</rt></ruby><ruby>早<rt>ㄗㄠ<span class="tone">ˇ</span></rt></ruby><ruby>餐<rt>ㄘㄢ</rt></ruby>', icon: '🥞' },
+            { id: 'm5', text: '<ruby>整<rt>ㄓㄥ<span class="tone">ˇ</span></rt></ruby><ruby>理<rt>ㄌㄧ<span class="tone">ˇ</span></rt></ruby><ruby>書<rt>ㄕㄨ</rt></ruby><ruby>包<rt>ㄅㄠ</rt></ruby>', icon: '🎒' },
+            { id: 'm6', text: '<ruby>穿<rt>ㄔㄨㄢ</rt></ruby><ruby>鞋<rt>ㄒㄧㄝ<span class="tone">ˊ</span></rt></ruby><ruby>子<rt>ㄗ<span class="tone">˙</span></rt></ruby><ruby>出<rt>ㄔㄨ</rt></ruby><ruby>門<rt>ㄇㄣ<span class="tone">ˊ</span></rt></ruby>', icon: '👟' }
         ],
         evening: [
-            { id: 'e1', text: '吃晚餐', icon: '🍲' },
-            { id: 'e2', text: '洗澡香香', icon: '🛁' },
-            { id: 'e3', text: '睡前刷牙', icon: '🪥' },
-            { id: 'e4', text: '整理書包', icon: '🎒' },
-            { id: 'e5', text: '準備明天的衣服', icon: '👚' },
-            { id: 'e6', text: '聽故事 / 閱讀', icon: '📖' },
-            { id: 'e7', text: '上床睡覺', icon: '🛌' }
+            { id: 'e1', text: '<ruby>吃<rt>ㄔ</rt></ruby><ruby>晚<rt>ㄨㄢ<span class="tone">ˇ</span></rt></ruby><ruby>餐<rt>ㄘㄢ</rt></ruby>', icon: '🍲' },
+            { id: 'e2', text: '<ruby>洗<rt>ㄒㄧ<span class="tone">ˇ</span></rt></ruby><ruby>澡<rt>ㄗㄠ<span class="tone">ˇ</span></rt></ruby><ruby>香<rt>ㄒㄧㄤ</rt></ruby><ruby>香<rt>ㄒㄧㄤ</rt></ruby>', icon: '🛁' },
+            { id: 'e3', text: '<ruby>睡<rt>ㄕㄨㄟ<span class="tone">ˋ</span></rt></ruby><ruby>前<rt>ㄑㄧㄢ<span class="tone">ˊ</span></rt></ruby><ruby>刷<rt>ㄕㄨㄚ</rt></ruby><ruby>牙<rt>ㄧㄚ<span class="tone">ˊ</span></rt></ruby>', icon: '🪥' },
+            { id: 'e4', text: '<ruby>整<rt>ㄓㄥ<span class="tone">ˇ</span></rt></ruby><ruby>理<rt>ㄌㄧ<span class="tone">ˇ</span></rt></ruby><ruby>書<rt>ㄕㄨ</rt></ruby><ruby>包<rt>ㄅㄠ</rt></ruby>', icon: '🎒' },
+            { id: 'e5', text: '<ruby>準<rt>ㄓㄨㄣ<span class="tone">ˇ</span></rt></ruby><ruby>備<rt>ㄅㄟ<span class="tone">ˋ</span></rt></ruby><ruby>明<rt>ㄇㄧㄥ<span class="tone">ˊ</span></rt></ruby><ruby>天<rt>ㄊㄧㄢ</rt></ruby><ruby>的<rt>ㄉㄜ<span class="tone">˙</span></rt></ruby><ruby>衣<rt>ㄧ</rt></ruby><ruby>服<rt>ㄈㄨ<span class="tone">ˊ</span></rt></ruby>', icon: '👚' },
+            { id: 'e6', text: '<ruby>聽<rt>ㄊㄧㄥ</rt></ruby><ruby>故<rt>ㄍㄨ<span class="tone">ˋ</span></rt></ruby><ruby>事<rt>ㄕ<span class="tone">ˋ</span></rt></ruby> / <ruby>閱<rt>ㄩㄝ<span class="tone">ˋ</span></rt></ruby><ruby>讀<rt>ㄉㄨ<span class="tone">ˊ</span></rt></ruby>', icon: '📖' },
+            { id: 'e7', text: '<ruby>上<rt>ㄕㄤ<span class="tone">ˋ</span></rt></ruby><ruby>床<rt>ㄔㄨㄤ<span class="tone">ˊ</span></rt></ruby><ruby>睡<rt>ㄕㄨㄟ<span class="tone">ˋ</span></rt></ruby><ruby>覺<rt>ㄐㄧㄠ<span class="tone">ˋ</span></rt></ruby>', icon: '🛌' }
         ]
     };
 

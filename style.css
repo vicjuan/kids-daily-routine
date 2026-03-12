@@ -69,6 +69,38 @@ h1 {
 p {
     font-size: 1.1rem;
     color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Ruby / Zhuyin */
+ruby {
+    ruby-position: over;
+    ruby-align: center;
+    margin-right: 1.3em; /* Greatly increase space so the Bopomofo + Tone Marks don't crowd the next character */
+}
+rt {
+    font-size: 0.55em;
+    color: var(--primary-color);
+    font-weight: bold;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    margin-left: 2px;
+    font-family: Arial, "Heiti TC", sans-serif;
+    position: relative; /* Setup absolute positioning context for tones */
+}
+
+/* 
+  Position standard Taiwanese Tone Marks (ˊ, ˇ, ˋ, ˙) properly to the right. 
+  The light tone ˙ needs special handling, we'll shift it up/right.
+*/
+rt .tone {
+    position: absolute;
+    right: -0.7em; /* Push to right of bopomofo */
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 1em;
+    text-align: center;
 }
 
 /* Tabs */
@@ -229,6 +261,13 @@ p {
     font-size: 1.3rem;
     font-weight: 700;
     transition: color 0.3s;
+    line-height: 2; /* give space for vertical ruby */
+}
+
+/* Ensure ruby and rt act as inline blocks effectively so vertical-rl is respected consistently */
+.task-title ruby {
+    display: inline-flex;
+    align-items: center;
 }
 
 .task-item.completed .task-title {
