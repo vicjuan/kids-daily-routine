@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小學生的每日任務 🌟</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🌟 我的每日任務 🌟</h1>
+            <p>完成任務，成為最棒的小學生！</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-target="morning-routine">☀️ 早上的任務</button>
+            <button class="tab-btn" data-target="evening-routine">🌙 睡前的任務</button>
+        </div>
+
+        <main>
+            <!-- Morning Routine Section -->
+            <section id="morning-routine" class="routine-section active">
+                <div class="progress-container">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="morning-progress"></div>
+                    </div>
+                    <span class="progress-text" id="morning-text">0/0</span>
+                </div>
+                <ul class="task-list" id="morning-list">
+                    <!-- Tasks will be injected here by script.js -->
+                </ul>
+                <div class="section-footer">
+                    <button class="reset-btn" data-type="morning">🔄 重新開始早上任務</button>
+                </div>
+            </section>
+
+            <!-- Evening Routine Section -->
+            <section id="evening-routine" class="routine-section">
+                <div class="progress-container">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="evening-progress"></div>
+                    </div>
+                    <span class="progress-text" id="evening-text">0/0</span>
+                </div>
+                <ul class="task-list" id="evening-list">
+                    <!-- Tasks will be injected here by script.js -->
+                </ul>
+                <div class="section-footer">
+                    <button class="reset-btn" data-type="evening">🔄 重新開始睡前任務</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
