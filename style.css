@@ -76,33 +76,34 @@ p {
 ruby {
     ruby-position: over;
     ruby-align: center;
-    margin-right: 1.3em; /* Greatly increase space so the Bopomofo + Tone Marks don't crowd the next character */
-    margin-bottom: 0.5em; /* Add vertical spacing for multiline wrapped phrases */
+    margin-right: 1.3em;
+    margin-bottom: 0.5em;
 }
 rt {
-    font-size: 0.55em;
+    font-size: 0.5em;
     color: var(--primary-color);
     font-weight: bold;
     writing-mode: vertical-rl;
     text-orientation: upright;
-    margin-left: 2px;
     font-family: Arial, "Heiti TC", sans-serif;
-    position: relative; /* Setup absolute positioning context for tones */
-    overflow: visible; /* Prevent Safari/WebKit from clipping absolute-positioned tone marks */
+    position: relative;
+    overflow: visible; /* 確保 tone 不會被裁切 */
 }
 
-/* 
-  Position standard Taiwanese Tone Marks (ˊ, ˇ, ˋ, ˙) properly to the right. 
-  The light tone ˙ needs special handling, we'll shift it up/right.
+/*
+  tone 使用物理座標定位到注音右側。
+  writing-mode: horizontal-tb 確保聲調符號不受垂直模式影響而正常顯示。
 */
 rt .tone {
     position: absolute;
-    right: -0.7em; /* Push to right of bopomofo */
-    top: 50%;
+    right: -0.7em;
+    top: 60%;
     transform: translateY(-50%);
+    writing-mode: horizontal-tb;
     display: inline-block;
     width: 1em;
     text-align: center;
+    line-height: 1;
 }
 
 /* Tabs */
