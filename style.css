@@ -88,6 +88,7 @@ rt {
     margin-left: 2px;
     font-family: Arial, "Heiti TC", sans-serif;
     position: relative; /* Setup absolute positioning context for tones */
+    overflow: visible; /* Prevent Safari/WebKit from clipping absolute-positioned tone marks */
 }
 
 /* 
