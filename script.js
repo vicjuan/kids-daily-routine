@@ -100,6 +100,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             li.addEventListener('click', () => toggleTask(task.id, type, li));
             container.appendChild(li);
+
+            // Wrap bare bopomofo text nodes in .bpmf so the flexbox rt layout works.
+            // This keeps tone marks (.tone span) as siblings, avoiding position:absolute
+            // which Safari/iOS silently drops inside rt elements.
+            li.querySelectorAll('rt').forEach(rt => {
+                Array.from(rt.childNodes).forEach(node => {
+                    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+                        const bpmf = document.createElement('span');
+                        bpmf.className = 'bpmf';
+                        bpmf.textContent = node.textContent;
+                        rt.replaceChild(bpmf, node);
+                    }
+                });
+            });
         });
     }
 
