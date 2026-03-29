@@ -83,27 +83,28 @@ rt {
     font-size: 0.5em;
     color: var(--primary-color);
     font-weight: bold;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
     font-family: Arial, "Heiti TC", sans-serif;
-    position: relative;
-    overflow: visible; /* 確保 tone 不會被裁切 */
 }
 
-/*
-  tone 使用物理座標定位到注音右側。
-  writing-mode: horizontal-tb 確保聲調符號不受垂直模式影響而正常顯示。
-*/
-rt .tone {
-    position: absolute;
-    right: -0.7em;
-    top: 60%;
-    transform: translateY(-50%);
-    writing-mode: horizontal-tb;
+/* .zhuyin 使用 flex 橫排：左側注音字直排，右側聲調符號橫排，
+   完全在 rt 框內，不需 position:absolute，Safari 也不會裁切。 */
+rt .zhuyin {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+rt .zhuyin .chars {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
     display: inline-block;
-    width: 1em;
-    text-align: center;
+}
+
+rt .tone {
+    display: inline-block;
+    writing-mode: horizontal-tb;
     line-height: 1;
+    margin-bottom: 0.15em;
 }
 
 /* Tabs */
