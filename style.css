@@ -1,19 +1,19 @@
 :root {
     --bg-gradient-start: #f6d365;
     --bg-gradient-end: #fda085;
-
+    
     --card-bg: rgba(255, 255, 255, 0.9);
     --text-main: #333333;
     --text-muted: #777777;
-
+    
     --tab-inactive: #e0e0e0;
     --tab-active-morning: #ffb7b2;
     --tab-active-evening: #c7ceea;
-
+    
     --primary-color: #ff9a9e;
     --success-color: #a8e6cf;
     --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-
+    
     --font-heading: 'Fredoka', sans-serif;
     --font-body: 'Nunito', sans-serif;
 }
@@ -63,7 +63,7 @@ h1 {
     font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 5px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
 }
 
 p {
@@ -79,34 +79,32 @@ ruby {
     margin-right: 1.3em;
     margin-bottom: 0.5em;
 }
-
 rt {
     font-size: 0.5em;
     color: var(--primary-color);
     font-weight: bold;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    margin-left: 2px;
     font-family: Arial, "Heiti TC", sans-serif;
-    position: relative;
-    /* Setup absolute positioning context for tones */
-    overflow: visible;
-    /* Prevent Safari/WebKit from clipping absolute-positioned tone marks */
 }
 
-/* 
-  Position standard Taiwanese Tone Marks (ˊ, ˇ, ˋ, ˙) properly to the right. 
-  The light tone ˙ needs special handling, we'll shift it up/right.
-*/
-rt .tone {
-    position: absolute;
-    right: -0.7em;
-    /* Push to right of bopomofo */
-    top: 50%;
-    transform: translateY(-50%);
+/* .zhuyin 使用 flex 橫排：左側注音字直排，右側聲調符號橫排，
+   完全在 rt 框內，不需 position:absolute，Safari 也不會裁切。 */
+rt .zhuyin {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+rt .zhuyin .chars {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
     display: inline-block;
-    width: 1em;
-    text-align: center;
+}
+
+rt .tone {
+    display: inline-block;
+    writing-mode: horizontal-tb;
+    line-height: 1;
+    margin-bottom: 0.15em;
 }
 
 /* Tabs */
@@ -114,7 +112,7 @@ rt .tone {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255,255,255,0.5);
     padding: 5px;
     border-radius: 20px;
 }
@@ -155,15 +153,8 @@ rt .tone {
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Progress Bar */
@@ -219,12 +210,12 @@ rt .tone {
     align-items: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
 }
 
 .task-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     border-color: #e2e8f0;
 }
 
@@ -232,7 +223,7 @@ rt .tone {
     background: var(--success-color);
     border-color: var(--success-color);
     color: #2b7a5a;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 10px rgba(255,255,255,0.5);
 }
 
 .task-checkbox {
@@ -261,17 +252,9 @@ rt .tone {
 }
 
 @keyframes popIn {
-    0% {
-        transform: scale(0);
-    }
-
-    80% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 .task-content {
@@ -282,8 +265,7 @@ rt .tone {
     font-size: 1.3rem;
     font-weight: 700;
     transition: color 0.3s;
-    line-height: 2;
-    /* give space for vertical ruby */
+    line-height: 2; /* give space for vertical ruby */
 }
 
 /* Ensure ruby and rt act as inline blocks effectively so vertical-rl is respected consistently */
@@ -323,7 +305,7 @@ rt .tone {
 .reset-btn:hover {
     color: var(--text-main);
     border-color: var(--text-main);
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(0,0,0,0.02);
 }
 
 /* Confetti Wrapper just in case */
